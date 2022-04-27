@@ -4,9 +4,8 @@
 * Ciclo 1 - 2022
 * Mario Antonio Guerra Morales - Carné: 21008
 * Linda Inés Jiménez Vides - Carné: 21169
-* Laboratorio06.s
-* Programa que calcula el perímetro de 3 cuadrados cuyos valores están
-* almacenados en memoria.
+* Arreglos.s
+* Programa que genera recibos de compras a clientes.
 ---------------------------------------------- */
 
 .text
