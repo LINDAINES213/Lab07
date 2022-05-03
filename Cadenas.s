@@ -15,36 +15,37 @@
 
 main:
 	stmfd sp!,{lr}
-	
+
 	ldr r0,=ingresopagina
 	bl puts
-	
 	ldr r0,=ingresonombre
 	bl puts
 	ldr r0,=entrada
 	ldr r1,=nombre
 	bl scanf
 	ldr r2,=nombre
-	
 	ldr r0,=ingresoapellido
 	bl puts
 	ldr r0,=entrada
 	ldr r1,=apellido
 	bl scanf
 	ldr r3,=apellido
-	
+
 	ldr r4,=caracterApe
 	ldr r4,[r4]
-	
+
 	ldr r5,=caracterNom
 	ldr r5,[r5]
-	
+
 	ldr r6,=caracterCoin
 	ldr r6,[r6]
-	
+
 	mov r7,#0 @@Contador del nombre
 	mov r8,#0 @@Contador del apellido
 	
+	ldr r2,=nombre
+	ldr r3,=apellido
+
 conteonombre:
 	ldrb r1,[r2],#1
 	add r5,#1
@@ -110,10 +111,8 @@ letrafinal:
 coincideultletra:
 	ldr r0,=formatoc
 	mov r1,r4
-	bl printf
 	ldr r0,=formatoc
 	mov r1,r5
-	bl printf
 	
 	add r6,#1
 	ldr r0,=caracterCoin
@@ -124,7 +123,7 @@ compatibilidad:
 	ldr r1,=caracterCoin
 	ldr r1,[r1]
 	bl printf
-	
+
 	mov r0,#0
 	mov r3,#0
 	ldmfd sp!,{lr}
@@ -148,10 +147,12 @@ ingresoapellido:
 fortuna:
 	.asciz "\nLa compatibilidad que posee este nombre es de: %d\n"
 entrada:
-	.asciz "%s"
+	.asciz " %s"
 formato:
-	.asciz "%d"
+	.asciz " %d"
 formatoc:
-	.asciz ".%c"
-nombre:		.asciz "                              " 
-apellido:	.asciz "                              "
+	.asciz " %c"
+nombre:
+	.asciz "          "
+apellido:
+	.asciz "          "
