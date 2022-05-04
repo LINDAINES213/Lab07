@@ -14,31 +14,33 @@
 .type main,%function
 
 main:
+	/* ----- Graba registro de enlace en la pila ----- */
 	stmfd sp!,{lr}
 
+	/* ----- Ingreso del nombre y apellido del bebe ----- */
 	ldr r0,=ingresopagina
 	bl puts
 	ldr r0,=ingresonombre
 	bl puts
 	ldr r0,=entrada
-	ldr r1,=nombre
+	ldr r1,=nombre				
 	bl scanf
-	ldr r2,=nombre
+	ldr r2,=nombre				@@Direccion de almacenamiento del dato leido
 	ldr r0,=ingresoapellido
 	bl puts
 	ldr r0,=entrada
-	ldr r1,=apellido
+	ldr r1,=apellido			
 	bl scanf
-	ldr r3,=apellido
+	ldr r3,=apellido			@@Direccion de almacenamiento del dato leido
 
 	ldr r4,=caracterApe
-	ldr r4,[r4]
+	ldr r4,[r4]					@@ Dirección y valor de caracterApe en R4.
 
 	ldr r5,=caracterNom
-	ldr r5,[r5]
+	ldr r5,[r5]					@@ Dirección y valor de caracterNom en R5.
 
 	ldr r6,=caracterCoin
-	ldr r6,[r6]
+	ldr r6,[r6]					@@ Dirección y valor de caracterCoin en R6.
 
 	mov r7,#0 @@Contador del nombre
 	mov r8,#0 @@Contador del apellido
