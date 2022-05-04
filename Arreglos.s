@@ -67,14 +67,12 @@ leche:
 	beq error
 	@calculo de precio
 	ldr r6,=precioleche
-	ldr r8,[r6]
+	ldr r6,[r6]
 	ldr r7,=unidades
 	ldr r7,[r7]
-	mul r8,r7
-	str r8,[r6]
-	ldr r0,=subtotal
-	ldr r1,=resultadoleche
-	ldr r1,[r1]
+	mul r8,r6,r7
+	ldr r0,=resultadoleche
+	str r8,[r0]
 	bl printf
 	b Menu
 
@@ -88,14 +86,12 @@ galletas:
 	beq error
 	@calculo de precio
 	ldr r6,=preciogalleta
-	ldr r8,[r6]
+	ldr r6,[r6]
 	ldr r7,=unidades
 	ldr r7,[r7]
-	mul r8,r7
-	str r8,[r6]
-	ldr r0,=subtotal
-	ldr r1,=preciogalleta
-	ldr r1,[r1]
+	mul r8,r6,r7
+	ldr r0,=resultadogalleta
+	str r8,[r0]
 	bl printf
 	b Menu
 
@@ -109,14 +105,12 @@ mantequilla:
 	beq error
 	@calculo de precio
 	ldr r6,=preciomantequilla
-	ldr r8,[r6]
+	ldr r6,[r6]
 	ldr r7,=unidades
 	ldr r7,[r7]
-	mul r8,r7
-	str r8,[r6]
-	ldr r0,=subtotal
-	ldr r1,=preciomantequilla
-	ldr r1,[r1]
+	mul r8,r6,r7
+	ldr r0,=resultadomantequilla
+	str r8,[r0]
 	bl printf
 	b Menu
 
@@ -130,14 +124,12 @@ queso:
 	beq error
 	@calculo de precio
 	ldr r6,=precioqueso
-	ldr r8,[r6]
+	ldr r6,[r6]
 	ldr r7,=unidades
 	ldr r7,[r7]
-	mul r8,r7
-	str r8,[r6]
-	ldr r0,=subtotal
-	ldr r1,=precioqueso
-	ldr r1,[r1]
+	mul r8,r6,r7
+	ldr r0,=resultadoqueso
+	str r8,[r0]
 	bl printf
 	b Menu
 
@@ -151,14 +143,12 @@ pan:
 	beq error
 	@calculo de precio
 	ldr r6,=preciopan
-	ldr r8,[r6]
+	ldr r6,[r6]
 	ldr r7,=unidades
 	ldr r7,[r7]
-	mul r8,r7
-	str r8,[r6]
-	ldr r0,=subtotal
-	ldr r1,=preciopan
-	ldr r1,[r1]
+	mul r8,r6,r7
+	ldr r0,=resultadopan
+	str r8,[r0]
 	bl printf
 	b Menu
 
@@ -172,15 +162,12 @@ jalea:
 	beq error
 	@calculo de precio
 	ldr r6,=preciojalea
-	ldr r8,[r6]
+	ldr r6,[r6]
 	ldr r7,=unidades
 	ldr r7,[r7]
-	mul r8,r7
-	str r8,[r6]
-	ldr r0,=subtotal
-	ldr r1,=preciojalea
-	ldr r1,[r1]
-	bl printf
+	mul r8,r6,r7
+	ldr r0,=resultadojalea
+	str r8,[r0]
 	b Menu
 
 yogurt:
@@ -193,14 +180,12 @@ yogurt:
 	beq error
 	@calculo de precio
 	ldr r6,=precioyogurt
-	ldr r8,[r6]
+	ldr r6,[r6]
 	ldr r7,=unidades
 	ldr r7,[r7]
-	mul r8,r7
-	str r8,[r6]
-	ldr r0,=subtotal
-	ldr r1,=precioyogurt
-	ldr r1,[r1]
+	mul r8,r6,r7
+	ldr r0,=resultadoyogurt
+	str r8,[r0]
 	bl printf
 	b Menu
 
@@ -214,14 +199,12 @@ manzana:
 	beq error
 	@calculo de precio
 	ldr r6,=preciomanzana
-	ldr r8,[r6]
+	ldr r6,[r6]
 	ldr r7,=unidades
 	ldr r7,[r7]
-	mul r8,r7
-	str r8,[r6]
-	ldr r0,=subtotal
-	ldr r1,=preciomanzana
-	ldr r1,[r1]
+	mul r8,r6,r7
+	ldr r0,=resultadomanzana
+	str r8,[r0]
 	bl printf
 	b Menu
 
@@ -232,35 +215,35 @@ recibo:
 	bl printf
 	ldr r0,=factura
 	bl puts
-	ldr r1,=precioleche
+	ldr r1,=resultadoleche
 	ldr r1,[r1]
 	ldr r0,=facturaleche
 	bl printf
-	ldr r1,=preciogalleta
+	ldr r1,=resultadogalleta
 	ldr r1,[r1]
 	ldr r0,=facturagalletas
 	bl printf
-	ldr r1,=preciomantequilla
+	ldr r1,=resultadomantequilla
 	ldr r1,[r1]
 	ldr r0,=facturamantequilla
 	bl printf
-	ldr r1,=precioqueso
+	ldr r1,=resultadoqueso
 	ldr r1,[r1]
 	ldr r0,=facturaqueso
 	bl printf
-	ldr r1,=preciopan
+	ldr r1,=resultadopan
 	ldr r1,[r1]
 	ldr r0,=facturapan
 	bl printf
-	ldr r1,=preciojalea
+	ldr r1,=resultadojalea
 	ldr r1,[r1]
 	ldr r0,=facturajalea
 	bl printf
-	ldr r1,=precioyogurt
+	ldr r1,=resultadoyogurt
 	ldr r1,[r1]
 	ldr r0,=facturayogurt
 	bl printf
-	ldr r1,=preciomanzana
+	ldr r1,=resultadomanzana
 	ldr r1,[r1]
 	ldr r0,=facturamanzana
 	bl printf
@@ -297,18 +280,32 @@ resultadoleche:
 	.word 0
 preciogalleta:
 	.word 25
+resultadogalleta:
+	.word 0
 preciomantequilla:
 	.word 10
+resultadomantequilla:
+	.word 0
 precioqueso:
 	.word 35
+resultadoqueso:
+	.word 0
 preciopan:
 	.word 4
+resultadopan:
+	.word 0
 preciojalea:
 	.word 26
+resultadojalea:
+	.word 0
 precioyogurt:
 	.word 8
+resultadoyogurt:
+	.word 0
 preciomanzana:
 	.word 19
+resultadomanzana:
+	.word 0
 subtotal:
 	.word 0
 bienvenida:
