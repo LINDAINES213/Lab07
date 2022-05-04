@@ -24,6 +24,8 @@ main:
 	ldr r1,=cliente
 	bl scanf
 	ldr r2,=cliente
+
+Menu:
 	ldr r0,=listadoproductos
 	bl puts
 	ldr r0,=formatoproducto
@@ -54,5 +56,300 @@ compra:
 	cmpne r3,#'s'
 	beq salir
 	bne errorMenu
-	
-	
+
+leche:
+	ldr r0,=ingresounidades
+	bl puts
+	ldr r0,=formatounidad
+	ldr r1,=unidades
+	bl scanf
+	cmp r0,#0
+	beq error
+	@calculo de precio
+	ldr r6,=precioleche
+	ldr r8,[r6]
+	ldr r7,=unidades
+	ldr r7,[r7]
+	mul r8,r7
+	str r8,[r6]
+	ldr r0,=subtotal
+	ldr r1,=resultadoleche
+	ldr r1,[r1]
+	bl printf
+	b Menu
+
+galletas:
+	ldr r0,=ingresounidades
+	bl puts
+	ldr r0,=formatounidad
+	ldr r1,=unidades
+	bl scanf
+	cmp r0,#0
+	beq error
+	@calculo de precio
+	ldr r6,=preciogalleta
+	ldr r8,[r6]
+	ldr r7,=unidades
+	ldr r7,[r7]
+	mul r8,r7
+	str r8,[r6]
+	ldr r0,=subtotal
+	ldr r1,=preciogalleta
+	ldr r1,[r1]
+	bl printf
+	b Menu
+
+mantequilla:
+	ldr r0,=ingresounidades
+	bl puts
+	ldr r0,=formatounidad
+	ldr r1,=unidades
+	bl scanf
+	cmp r0,#0
+	beq error
+	@calculo de precio
+	ldr r6,=preciomantequilla
+	ldr r8,[r6]
+	ldr r7,=unidades
+	ldr r7,[r7]
+	mul r8,r7
+	str r8,[r6]
+	ldr r0,=subtotal
+	ldr r1,=preciomantequilla
+	ldr r1,[r1]
+	bl printf
+	b Menu
+
+queso:
+	ldr r0,=ingresounidades
+	bl puts
+	ldr r0,=formatounidad
+	ldr r1,=unidades
+	bl scanf
+	cmp r0,#0
+	beq error
+	@calculo de precio
+	ldr r6,=precioqueso
+	ldr r8,[r6]
+	ldr r7,=unidades
+	ldr r7,[r7]
+	mul r8,r7
+	str r8,[r6]
+	ldr r0,=subtotal
+	ldr r1,=precioqueso
+	ldr r1,[r1]
+	bl printf
+	b Menu
+
+pan:
+	ldr r0,=ingresounidades
+	bl puts
+	ldr r0,=formatounidad
+	ldr r1,=unidades
+	bl scanf
+	cmp r0,#0
+	beq error
+	@calculo de precio
+	ldr r6,=preciopan
+	ldr r8,[r6]
+	ldr r7,=unidades
+	ldr r7,[r7]
+	mul r8,r7
+	str r8,[r6]
+	ldr r0,=subtotal
+	ldr r1,=preciopan
+	ldr r1,[r1]
+	bl printf
+	b Menu
+
+jalea:
+	ldr r0,=ingresounidades
+	bl puts
+	ldr r0,=formatounidad
+	ldr r1,=unidades
+	bl scanf
+	cmp r0,#0
+	beq error
+	@calculo de precio
+	ldr r6,=preciojalea
+	ldr r8,[r6]
+	ldr r7,=unidades
+	ldr r7,[r7]
+	mul r8,r7
+	str r8,[r6]
+	ldr r0,=subtotal
+	ldr r1,=preciojalea
+	ldr r1,[r1]
+	bl printf
+	b Menu
+
+yogurt:
+	ldr r0,=ingresounidades
+	bl puts
+	ldr r0,=formatounidad
+	ldr r1,=unidades
+	bl scanf
+	cmp r0,#0
+	beq error
+	@calculo de precio
+	ldr r6,=precioyogurt
+	ldr r8,[r6]
+	ldr r7,=unidades
+	ldr r7,[r7]
+	mul r8,r7
+	str r8,[r6]
+	ldr r0,=subtotal
+	ldr r1,=precioyogurt
+	ldr r1,[r1]
+	bl printf
+	b Menu
+
+manzana:
+	ldr r0,=ingresounidades
+	bl puts
+	ldr r0,=formatounidad
+	ldr r1,=unidades
+	bl scanf
+	cmp r0,#0
+	beq error
+	@calculo de precio
+	ldr r6,=preciomanzana
+	ldr r8,[r6]
+	ldr r7,=unidades
+	ldr r7,[r7]
+	mul r8,r7
+	str r8,[r6]
+	ldr r0,=subtotal
+	ldr r1,=preciomanzana
+	ldr r1,[r1]
+	bl printf
+	b Menu
+
+recibo:
+	ldr r2,=cliente
+	mov r1, r2
+	ldr r0,=recibocliente
+	bl printf
+	ldr r0,=factura
+	bl puts
+	ldr r1,=precioleche
+	ldr r1,[r1]
+	ldr r0,=facturaleche
+	bl printf
+	ldr r1,=preciogalleta
+	ldr r1,[r1]
+	ldr r0,=facturagalletas
+	bl printf
+	ldr r1,=preciomantequilla
+	ldr r1,[r1]
+	ldr r0,=facturamantequilla
+	bl printf
+	ldr r1,=precioqueso
+	ldr r1,[r1]
+	ldr r0,=facturaqueso
+	bl printf
+	ldr r1,=preciopan
+	ldr r1,[r1]
+	ldr r0,=facturapan
+	bl printf
+	ldr r1,=preciojalea
+	ldr r1,[r1]
+	ldr r0,=facturajalea
+	bl printf
+	ldr r1,=precioyogurt
+	ldr r1,[r1]
+	ldr r0,=facturayogurt
+	bl printf
+	ldr r1,=preciomanzana
+	ldr r1,[r1]
+	ldr r0,=facturamanzana
+	bl printf
+	b salir
+
+error:
+	ldr r0,=Error
+	bl puts
+	bl getchar
+	b compra
+
+errorMenu:
+	ldr r0,=Error
+	bl puts
+	bl getchar
+	b Menu
+
+salir:
+	ldr r0,=despedida
+	bl puts
+	mov r0, #0
+	mov r3, #0
+	ldmfd sp!, {lr}
+	bx lr
+
+.data
+.align 2
+
+unidades:
+	.word 0
+precioleche:
+	.word 18
+resultadoleche:
+	.word 0
+preciogalleta:
+	.word 25
+preciomantequilla:
+	.word 10
+precioqueso:
+	.word 35
+preciopan:
+	.word 4
+preciojalea:
+	.word 26
+precioyogurt:
+	.word 8
+preciomanzana:
+	.word 19
+subtotal:
+	.word 0
+bienvenida:
+	.asciz "Bienvenido a nuestra humilde tienda, aqui encontrara\nlos mejores y mas frescos productos para usted!"
+nombrecliente:
+	.asciz "Ingrese aqui su nombre para su recibo: "
+formatonombre:
+	.asciz " %s"
+cliente:
+	.asciz "          "
+listadoproductos:
+	.asciz "LISTADO DE PRODUCTOS\nPRODUCTO - PRECIO UNIDAD - CANTIDAD\n1.Leche - Q18.00 - 20\n2.Galletas - Q25.00 - 32\n3.Mantequilla - Q10.00 - 15\n4.Queso - Q35.00 - 15\n5.Pan - Q4.00 - 20\n6.Jalea - Q26.00 - 18\n7.Yogurt - Q8.00 - 35\n8.Manzana - Q19.00 - 35\ni.Imprimir recibo.\ns.Salir.\n"
+formatoproducto:
+	.asciz " %c"
+producto:
+	.asciz "%c"
+ingresounidades:
+	.asciz "Cuantas unidades desea llevar? "
+formatounidad:
+	.asciz " %d"
+recibocliente:
+	.asciz "Cliente: %s\n"
+factura:
+	.asciz "Descripcion - Precio Unit. Q - Subtotal Q"
+facturaleche:
+	.asciz "Leche - 18.00 - %d\n"
+facturagalletas:
+	.asciz "Galletas - 25.00 - %d\n"
+facturamantequilla:
+	.asciz "Mantequilla - 10.00 - %d\n"
+facturaqueso:
+	.asciz "Queso - 35.00 - %d\n"
+facturapan:
+	.asciz "Pan - 04.00 - %d\n"
+facturajalea:
+	.asciz "Jalea - 26.00 - %d\n"
+facturayogurt:
+	.asciz "Yogurt - 08.00 - %d\n"
+facturamanzana:
+	.asciz "Manzana - 19.00 - %d\n"
+Error:
+	.asciz "Ingreso de caracter incorrecto."
+despedida:
+	.asciz "Esperamos haya disfrutado su estadia! "
