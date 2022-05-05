@@ -308,6 +308,8 @@ resultadomanzana:
 	.word 0
 subtotal:
 	.word 0
+total:
+	.word 0
 bienvenida:
 	.asciz "Bienvenido a nuestra humilde tienda, aqui encontrara\nlos mejores y mas frescos productos para usted!"
 nombrecliente:
@@ -346,6 +348,8 @@ facturayogurt:
 	.asciz "Yogurt - 08.00 - %d\n"
 facturamanzana:
 	.asciz "Manzana - 19.00 - %d\n"
+totales:
+	.asciz "El total es de: %d\n"
 Error:
 	.asciz "Ingreso de caracter incorrecto."
 despedida:
