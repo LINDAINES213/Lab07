@@ -16,9 +16,9 @@
 main:
 	stmfd sp!,{lr}
 	
-	ldr r0,=bienvenida
+	ldr r0,=bienvenida @@Mensaje de bienvenida.
 	bl puts
-	ldr r0,=nombrecliente
+	ldr r0,=nombrecliente @@Mensaje para escanear el nombre del cliente para el recibo.
 	bl puts
 	ldr r0,=formatonombre
 	ldr r1,=cliente
@@ -26,46 +26,47 @@ main:
 	ldr r2,=cliente
 
 Menu:
-	ldr r0,=listadoproductos
+	ldr r0,=listadoproductos @@Imprime el listado de productos en el menú.
 	bl puts
-	ldr r0,=formatoproducto
+	ldr r0,=formatoproducto	@@Escanea la opción.
 	ldr r1,=producto
 	bl scanf
 	
 compra:
-	ldr r3,=producto
+	ldr r3,=producto @@Guarda la opción del usuario.
 	ldrb r3,[r3]
-	cmp r3,#'1'
+	cmp r3,#'1'		@@Comprar leche.
 	beq leche
-	cmpne r3,#'2'
+	cmpne r3,#'2'	@@Comprar galletas.
 	beq galletas
-	cmpne r3,#'3'
+	cmpne r3,#'3'	@@Comprar mantequilla.
 	beq mantequilla
-	cmpne r3,#'4'
+	cmpne r3,#'4'	@@Comprar queso.
 	beq queso
-	cmpne r3,#'5'
+	cmpne r3,#'5'	@@Comprar pan.
 	beq pan
-	cmpne r3,#'6'
+	cmpne r3,#'6'	@@Comprar jalea.
 	beq jalea
-	cmpne r3,#'7'
+	cmpne r3,#'7'	@@Comprar yogurt.
 	beq yogurt
-	cmpne r3,#'8'
+	cmpne r3,#'8'	@@Comprar manzana.
 	beq manzana
-	cmpne r3,#'i'
+	cmpne r3,#'i'	@@Imprimir recibo.
 	beq recibo
-	cmpne r3,#'s'
+	cmpne r3,#'s'	@@Salir del menú.
 	beq salir
 	bne errorMenu
 
 leche:
-	ldr r0,=ingresounidades
+	ldr r0,=ingresounidades		@@Mensaje para ingresar las unidades del producto a comprar.
 	bl puts
 	ldr r0,=formatounidad
-	ldr r1,=unidades
+	ldr r1,=unidades			@@Escanea las unidades.
 	bl scanf
+	@@Compara para detectar un error.
 	cmp r0,#0
 	beq error
-	@calculo de precio
+	@@calculo de precio
 	ldr r6,=precioleche
 	ldr r6,[r6]
 	ldr r7,=unidades
@@ -77,14 +78,15 @@ leche:
 	b Menu
 
 galletas:
-	ldr r0,=ingresounidades
+	ldr r0,=ingresounidades		@@Mensaje para ingresar las unidades del producto a comprar.
 	bl puts
 	ldr r0,=formatounidad
-	ldr r1,=unidades
+	ldr r1,=unidades			@@Escanea las unidades.
 	bl scanf
+	@@Compara para detectar un error.
 	cmp r0,#0
 	beq error
-	@calculo de precio
+	@@calculo de precio
 	ldr r6,=preciogalleta
 	ldr r6,[r6]
 	ldr r7,=unidades
@@ -96,14 +98,15 @@ galletas:
 	b Menu
 
 mantequilla:
-	ldr r0,=ingresounidades
+	ldr r0,=ingresounidades		@@Mensaje para ingresar las unidades del producto a comprar.
 	bl puts
 	ldr r0,=formatounidad
-	ldr r1,=unidades
+	ldr r1,=unidades			@@Escanea las unidades.
 	bl scanf
+	@@Compara para detectar un error.
 	cmp r0,#0
 	beq error
-	@calculo de precio
+	@@calculo de precio
 	ldr r6,=preciomantequilla
 	ldr r6,[r6]
 	ldr r7,=unidades
@@ -115,14 +118,15 @@ mantequilla:
 	b Menu
 
 queso:
-	ldr r0,=ingresounidades
+	ldr r0,=ingresounidades		@@Mensaje para ingresar las unidades del producto a comprar.
 	bl puts
 	ldr r0,=formatounidad
-	ldr r1,=unidades
+	ldr r1,=unidades			@@Escanea las unidades.
 	bl scanf
+	@@Compara para detectar un error.
 	cmp r0,#0
 	beq error
-	@calculo de precio
+	@@calculo de precio
 	ldr r6,=precioqueso
 	ldr r6,[r6]
 	ldr r7,=unidades
@@ -134,14 +138,15 @@ queso:
 	b Menu
 
 pan:
-	ldr r0,=ingresounidades
+	ldr r0,=ingresounidades		@@Mensaje para ingresar las unidades del producto a comprar.
 	bl puts
 	ldr r0,=formatounidad
-	ldr r1,=unidades
+	ldr r1,=unidades			@@Escanea las unidades.
 	bl scanf
+	@@Compara para detectar un error.
 	cmp r0,#0
 	beq error
-	@calculo de precio
+	@@calculo de precio
 	ldr r6,=preciopan
 	ldr r6,[r6]
 	ldr r7,=unidades
@@ -153,14 +158,15 @@ pan:
 	b Menu
 
 jalea:
-	ldr r0,=ingresounidades
+	ldr r0,=ingresounidades		@@Mensaje para ingresar las unidades del producto a comprar.
 	bl puts
 	ldr r0,=formatounidad
-	ldr r1,=unidades
+	ldr r1,=unidades			@@Escanea las unidades.
 	bl scanf
+	@@Compara para detectar un error.
 	cmp r0,#0
 	beq error
-	@calculo de precio
+	@@calculo de precio
 	ldr r6,=preciojalea
 	ldr r6,[r6]
 	ldr r7,=unidades
@@ -171,14 +177,15 @@ jalea:
 	b Menu
 
 yogurt:
-	ldr r0,=ingresounidades
+	ldr r0,=ingresounidades		@@Mensaje para ingresar las unidades del producto a comprar.
 	bl puts
 	ldr r0,=formatounidad
-	ldr r1,=unidades
+	ldr r1,=unidades			@@Escanea las unidades.
 	bl scanf
+	@@Compara para detectar un error.
 	cmp r0,#0
 	beq error
-	@calculo de precio
+	@@calculo de precio
 	ldr r6,=precioyogurt
 	ldr r6,[r6]
 	ldr r7,=unidades
@@ -190,14 +197,15 @@ yogurt:
 	b Menu
 
 manzana:
-	ldr r0,=ingresounidades
+	ldr r0,=ingresounidades		@@Mensaje para ingresar las unidades del producto a comprar.
 	bl puts
 	ldr r0,=formatounidad
-	ldr r1,=unidades
+	ldr r1,=unidades			@@Escanea las unidades.
 	bl scanf
+	@@Compara para detectar un error.
 	cmp r0,#0
 	beq error
-	@calculo de precio
+	@@calculo de precio
 	ldr r6,=preciomanzana
 	ldr r6,[r6]
 	ldr r7,=unidades
@@ -209,60 +217,60 @@ manzana:
 	b Menu
 
 recibo:
-	ldr r2,=cliente
+	ldr r2,=cliente			@@Carga al nombre del cliente y lo mueve al registro r1.
 	mov r1, r2
 	ldr r0,=recibocliente
 	bl printf
-	ldr r0,=factura
+	ldr r0,=factura			@@Carga la instruccion del recibo.
 	bl puts
-	ldr r1,=resultadoleche
+	ldr r1,=resultadoleche	@@Carga el subtotal para agregarlo a la factura.
 	ldr r1,[r1]
-	ldr r0,=facturaleche
+	ldr r0,=facturaleche	@@Linea de la factura de la leche.
 	bl printf
-	ldr r1,=resultadogalleta
+	ldr r1,=resultadogalleta	@@Carga el subtotal para agregarlo a la factura.
 	ldr r1,[r1]
-	ldr r0,=facturagalletas
+	ldr r0,=facturagalletas	@@Linea de la factura de las galletas.
 	bl printf
-	ldr r1,=resultadomantequilla
+	ldr r1,=resultadomantequilla	@@Carga el subtotal para agregarlo a la factura.
 	ldr r1,[r1]
-	ldr r0,=facturamantequilla
+	ldr r0,=facturamantequilla	@@Linea de la factura de la mantequilla.
 	bl printf
-	ldr r1,=resultadoqueso
+	ldr r1,=resultadoqueso		@@Carga el subtotal para agregarlo a la factura.
 	ldr r1,[r1]
-	ldr r0,=facturaqueso
+	ldr r0,=facturaqueso		@@Linea de la factura del queso.
 	bl printf
-	ldr r1,=resultadopan
+	ldr r1,=resultadopan	@@Carga el subtotal para agregarlo a la factura.
 	ldr r1,[r1]
-	ldr r0,=facturapan
+	ldr r0,=facturapan		@@Linea de la factura del pan.
 	bl printf
-	ldr r1,=resultadojalea
+	ldr r1,=resultadojalea	@@Carga el subtotal para agregarlo a la factura.
 	ldr r1,[r1]
-	ldr r0,=facturajalea
+	ldr r0,=facturajalea	@@Linea de la factura de la jalea.
 	bl printf
-	ldr r1,=resultadoyogurt
+	ldr r1,=resultadoyogurt		@@Carga el subtotal para agregarlo a la factura.
 	ldr r1,[r1]
-	ldr r0,=facturayogurt
+	ldr r0,=facturayogurt	@@Linea de la factura del yogurt.
 	bl printf
-	ldr r1,=resultadomanzana
+	ldr r1,=resultadomanzana	@@Carga el subtotal para agregarlo a la factura.
 	ldr r1,[r1]
-	ldr r0,=facturamanzana
+	ldr r0,=facturamanzana	@@Linea de la factura de la manzana.
 	bl printf
-	b salir
+	b salir		@@Funcion Salir.
 
 error:
-	ldr r0,=Error
+	ldr r0,=Error	@@Detecta un error en los caracteres usados.
 	bl puts
 	bl getchar
 	b compra
 
 errorMenu:
-	ldr r0,=Error
+	ldr r0,=Error	@@Detecta un error en los caracteres del menú.
 	bl puts
 	bl getchar
 	b Menu
 
 salir:
-	ldr r0,=despedida
+	ldr r0,=despedida		@@Mensaje de despedida para salida segura.
 	bl puts
 	mov r0, #0
 	mov r3, #0
